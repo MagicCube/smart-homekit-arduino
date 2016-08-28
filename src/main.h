@@ -3,20 +3,18 @@
 
 #include <Sodaq_DS3231.h>
 
-#define TIME_MODE 0
-#define TEMPERATURE_MODE 1
-#define AC_MODE 2
-#define WIFI_MODE 3
-#define ABOUT_MODE 4
-#define MODE_COUNT 5
+#define TIME_SCENE 0
+#define TEMPERATURE_SCENE 1
+#define ABOUT_SCENE 2
+#define SCENE_COUNT 3
 // 0 - Date
 // 1 - Time
 // 2 - Temperature
 // 3 - About
-int modeIndex = 0;
-void switchToMode(int index);
-void switchToLastMode();
-void switchNextLastMode();
+int sceneIndex = 0;
+void switchToScene(int index);
+void switchToLastScene();
+void switchNextLastScene();
 
 unsigned long lastTick = 0;
 void captureTickEvent();

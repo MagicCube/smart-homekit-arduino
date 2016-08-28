@@ -26,7 +26,7 @@ void setup()
 
     //adjustTime();
 
-    switchToMode(0);
+    switchToScene(0);
 }
 
 void loop()
@@ -35,28 +35,18 @@ void loop()
     captureTickEvent();
 }
 
-void switchToMode(int index)
+void switchToScene(int index)
 {
     lcd.clear();
-    modeIndex = index;
-    switch (modeIndex)
+    sceneIndex = index;
+    switch (sceneIndex)
     {
-        case TIME_MODE:
+        case TIME_SCENE:
             break;
-        case TEMPERATURE_MODE:
+        case TEMPERATURE_SCENE:
             lcd.print("Temperature");
             break;
-        case AC_MODE:
-            lcd.print("Air Conditioning");
-            lcd.setCursor(0, 1);
-            lcd.print("Monitor       ON");
-            break;
-        case WIFI_MODE:
-            lcd.print("WiFi");
-            lcd.setCursor(0, 1);
-            lcd.print("192.168.2.14");
-            break;
-        case ABOUT_MODE:
+        case ABOUT_SCENE:
             lcd.print("Smart Homekit");
             lcd.setCursor(0, 1);
             lcd.print("Makers Bootcamp");
@@ -65,27 +55,27 @@ void switchToMode(int index)
     onTick();
 }
 
-void switchToLastMode()
+void switchToLastScene()
 {
-    if (modeIndex == 0)
+    if (sceneIndex == 0)
     {
-        switchToMode(MODE_COUNT - 1);
+        switchToScene(SCENE_COUNT - 1);
     }
     else
     {
-        switchToMode(modeIndex - 1);
+        switchToScene(sceneIndex - 1);
     }
 }
 
-void switchToNextMode()
+void switchToNextScene()
 {
-    if (modeIndex == MODE_COUNT - 1)
+    if (sceneIndex == SCENE_COUNT - 1)
     {
-        switchToMode(0);
+        switchToScene(0);
     }
     else
     {
-        switchToMode(modeIndex + 1);
+        switchToScene(sceneIndex + 1);
     }
 }
 
@@ -104,13 +94,13 @@ void captureTickEvent()
 
 void onTick()
 {
-    if (modeIndex == ABOUT_MODE) return;
+    if (sceneIndex == ABOUT_SCENE) return;
 
     DateTime now = rtc.now();
     lcd.setCursor(0, 1);
-    switch (modeIndex)
+    switch (sceneIndex)
     {
-        case TIME_MODE:
+        case TIME_SCENE:
             lcd.setCursor(0, 0);
         	lcd.print(formatDate(now));
             lcd.setCursor(0, 1);
@@ -119,7 +109,7 @@ void onTick()
             rtc.convertTemperature();
             lcd.print(rtc.getTemperature());
             break;
-        case TEMPERATURE_MODE:
+        case TEMPERATURE_SCENE:
             rtc.convertTemperature();
             lcd.print(rtc.getTemperature());
             break;
@@ -128,22 +118,22 @@ void onTick()
 
 void onLeftKeyDown()
 {
-    switchToLastMode();
+    switchToLastScene();
 }
 
 void onRightKeyDown()
 {
-    switchToNextMode();
+    switchToNextScene();
 }
 
 void onUpKeyDown()
 {
-    switchToLastMode();
+    switchToLastScene();
 }
 
 void onDownKeyDown()
 {
-    switchToNextMode();
+    switchToNextScene();
 }
 
 
