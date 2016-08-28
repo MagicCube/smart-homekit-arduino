@@ -9,3 +9,7 @@ This is a [Platform.IO](http://platformio.org) project.
 * DFRobot LCD Keypad Shield
 * DS3231
 * ESP8266 / NodeMCU
+
+## Photos
+
+![](photos/01.jpg)
