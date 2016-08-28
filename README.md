@@ -1,4 +1,4 @@
-# smart-homekit-arduino
+# smart-homekit-arduino [![](https://api.travis-ci.org/MagicCube/smart-homekit-arduino.svg)](https://travis-ci.org/MagicCube/smart-homekit-arduino)
 My first Arduino project.
 
 ## Platform.IO
