@@ -115,6 +115,9 @@ void onTick()
         	lcd.print(formatDate(now));
             lcd.setCursor(0, 1);
             lcd.print(formatTime(now));
+            lcd.print("   ");
+            rtc.convertTemperature();
+            lcd.print(rtc.getTemperature());
             break;
         case TEMPERATURE_MODE:
             rtc.convertTemperature();
@@ -165,7 +168,7 @@ String formatDate(DateTime now)
     result.concat(digit2(now.month()));
     result.concat('-');
     result.concat(digit2(now.date()));
-    result.concat(' ');
+    result.concat("   ");
     result.concat(WEEK_DAY[now.dayOfWeek()]);
     return result;
 }
